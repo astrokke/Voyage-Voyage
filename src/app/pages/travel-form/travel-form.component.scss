@@ -1,0 +1,51 @@
+.travel-form {
+  width: 100%;
+  background: #ffffff;
+  padding: 3%;
+  border-radius: 2%;
+}
+
+h1 {
+  margin: 0 0 2% 0;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 3%;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+input,
+textarea {
+  padding: 2%;
+  border-radius: 2%;
+  border: 0.5% solid #cbd5f5;
+  font-size: 100%;
+}
+
+textarea {
+}
+
+button {
+  grid-column: 1 / -1;
+  border: none;
+  background: #0ea5e9;
+  color: #ffffff;
+  padding: 2%;
+  border-radius: 2%;
+  cursor: pointer;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 90%;
+}
+

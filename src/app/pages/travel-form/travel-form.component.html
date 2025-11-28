@@ -1,0 +1,42 @@
+<section class="travel-form">
+  <h1>{{ isEdit ? 'Modifier' : 'Créer' }} un voyage</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Titre
+      <input formControlName="title" placeholder="Titre" />
+      @if (form.controls.title.invalid && form.controls.title.touched) {
+        <span class="error">Titre obligatoire</span>
+      }
+    </label>
+
+    <label>
+      Destination
+      <input formControlName="destination" placeholder="Destination" />
+      @if (form.controls.destination.invalid && form.controls.destination.touched) {
+        <span class="error">Destination obligatoire</span>
+      }
+    </label>
+
+    <label>
+      Description
+      <textarea formControlName="description" placeholder="Description"></textarea>
+    </label>
+
+    <label>
+      Date de début
+      <input type="date" formControlName="startDate" />
+    </label>
+
+    <label>
+      Date de fin
+      <input type="date" formControlName="endDate" />
+    </label>
+
+    <label>
+      Image (URL)
+      <input formControlName="imageUrl" placeholder="https://..." />
+    </label>
+
+    <button type="submit">{{ isEdit ? 'Mettre à jour' : 'Créer' }}</button>
+  </form>
+</section>

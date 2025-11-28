@@ -1,0 +1,30 @@
+.notification {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1% 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0f172a;
+  background: #e2e8f0;
+  border-radius: 2%;
+  margin-bottom: 1%;
+}
+
+.notification.success {
+  background: #bbf7d0;
+}
+
+.notification.error {
+  background: #fecdd3;
+}
+
+button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 100%;
+  cursor: pointer;
+  margin-left: 2%;
+}

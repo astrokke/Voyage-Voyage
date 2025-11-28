@@ -1,0 +1,45 @@
+.app-shell {
+  width: 100%;
+  min-height: 100%;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f172a;
+  padding: 2% 4%;
+  color: #ffffff;
+}
+
+.brand {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.app-nav {
+  display: flex;
+  gap: 4%;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: #e2e8f0;
+  font-size: 110%;
+}
+
+.app-nav a.active {
+  color: #38bdf8;
+}
+
+.app-content {
+  width: 100%;
+  min-height: 100%;
+  padding: 3%;
+}

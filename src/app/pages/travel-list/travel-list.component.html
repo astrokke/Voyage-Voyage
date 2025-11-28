@@ -1,0 +1,35 @@
+<section class="list-header">
+  <div class="intro">
+    <h1>Voyages</h1>
+    <p>Organisez vos séjours et accédez aux détails en un clic.</p>
+  </div>
+  <a routerLink="/travels/new" class="primary-link">Créer un voyage</a>
+</section>
+
+<p *ngIf="loading$ | async">Chargement des voyages...</p>
+<ng-container *ngIf="(loading$ | async) === false">
+  <ng-container *ngIf="travels$ | async as travels">
+    <p *ngIf="travels.length === 0">Pas de voyage pour le moment.</p>
+    <section class="travel-grid" *ngIf="travels.length > 0">
+      <article
+        class="travel-card"
+        *ngFor="let travel of travels; trackBy: trackById"
+        [class.highlight]="highlightedId() === travel.id"
+      >
+        <header>
+          <h2>{{ travel.title }}</h2>
+          <span>{{ travel.destination }}</span>
+        </header>
+        <p class="dates">
+          {{ travel.startDate | date: 'dd/MM/yyyy' }} - {{ travel.endDate | date: 'dd/MM/yyyy' }}
+        </p>
+        <p class="description">{{ travel.description || 'Pas de description' }}</p>
+        <footer>
+          <a [routerLink]="['/travels', travel.id]" class="action">Détails</a>
+          <a [routerLink]="['/travels', travel.id, 'edit']" class="action">Modifier</a>
+          <button type="button" (click)="remove(travel.id)">Supprimer</button>
+        </footer>
+      </article>
+    </section>
+  </ng-container>
+</ng-container>

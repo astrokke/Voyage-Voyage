@@ -1,0 +1,47 @@
+<section class="step-column" [class.highlight]="highlighted">
+  <header>
+    <div>
+      <h3>{{ step.name }}</h3>
+      <span>Jour {{ step.order }}</span>
+    </div>
+    <div class="step-actions">
+      <button type="button" (click)="requestStepEdit()">Modifier</button>
+      <button type="button" (click)="requestStepDelete()">Supprimer</button>
+    </div>
+  </header>
+
+  <div class="activities">
+    <ng-container *ngIf="step.activities?.length; else emptyActivities">
+      <article *ngFor="let activity of step.activities; trackBy: trackActivity">
+        <div class="activity-head">
+          <h4>{{ activity.title }}</h4>
+          <span class="status" [class.done]="activity.status === 'faite'">
+            {{ activity.status === 'faite' ? 'Faite' : 'Prévue' }}
+          </span>
+        </div>
+        <p class="schedule">{{ activity.schedule || 'Horaires non définis' }}</p>
+        <p class="description">{{ activity.description || 'Pas de description' }}</p>
+        <div class="activity-actions">
+          <button type="button" (click)="requestActivityEdit(activity)">Modifier</button>
+          <button type="button" (click)="requestActivityDelete(activity.id)">Supprimer</button>
+          <button type="button" (click)="toggleStatus(activity)">Changer statut</button>
+        </div>
+      </article>
+    </ng-container>
+    <ng-template #emptyActivities>
+      <p class="empty">Aucune activité prévue.</p>
+    </ng-template>
+  </div>
+
+  <form [formGroup]="activityForm" (ngSubmit)="submitActivity()" class="activity-form">
+    <input formControlName="title" placeholder="Titre de l'activité" />
+    <p class="error" *ngIf="activityForm.controls.title.invalid && activityForm.controls.title.touched">Titre obligatoire</p>
+    <textarea formControlName="description" placeholder="Description"></textarea>
+    <input formControlName="schedule" placeholder="Horaires" />
+    <select formControlName="status">
+      <option value="prevue">Prévue</option>
+      <option value="faite">Faite</option>
+    </select>
+    <button type="submit">Ajouter une activité</button>
+  </form>
+</section>

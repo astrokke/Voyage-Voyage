@@ -1,0 +1,111 @@
+.travel-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+}
+
+ .travel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 3%;
+  align-items: flex-start;
+  background: #ffffff;
+  padding: 3%;
+  border-radius: 2%;
+}
+
+.info {
+  flex: 1;
+}
+
+.preview {
+  width: 100%;
+  max-height: 200%;
+  object-fit: cover;
+  border-radius: 2%;
+  margin-top: 2%;
+}
+
+.travel-header h1 {
+  margin: 0;
+  font-size: 220%;
+}
+
+.destination,
+.dates,
+.description {
+  margin: 1% 0;
+  color: #475569;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  min-width: 20%;
+}
+
+.header-actions a {
+  text-decoration: none;
+  color: #0ea5e9;
+}
+
+.header-actions button {
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  padding: 2%;
+  border-radius: 2%;
+  cursor: pointer;
+}
+
+.step-creator {
+  background: #ffffff;
+  padding: 3%;
+  border-radius: 2%;
+}
+
+.step-creator h2 {
+  margin: 0 0 2% 0;
+}
+
+.step-creator form {
+  display: flex;
+  gap: 2%;
+  align-items: flex-start;
+}
+
+.step-creator input {
+  flex: 1;
+  padding: 2%;
+  border-radius: 2%;
+  border: 0.5% solid #cbd5f5;
+}
+
+.step-creator button {
+  border: none;
+  background: #0ea5e9;
+  color: #ffffff;
+  padding: 2% 3%;
+  border-radius: 2%;
+  cursor: pointer;
+}
+
+.error {
+  margin: 0;
+  color: #ef4444;
+  font-size: 90%;
+}
+
+.steps-board {
+  background: #f8fafc;
+  padding: 2%;
+  border-radius: 2%;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 2%;
+}
+

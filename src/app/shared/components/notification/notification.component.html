@@ -1,0 +1,11 @@
+<ng-container *ngIf="notification$ | async as notification">
+  <section
+    *ngIf="notification.message"
+    class="notification"
+    [class.success]="notification.kind === 'success'"
+    [class.error]="notification.kind === 'error'"
+  >
+    <span>{{ notification.message }}</span>
+    <button type="button" (click)="clear()">Fermer</button>
+  </section>
+</ng-container>

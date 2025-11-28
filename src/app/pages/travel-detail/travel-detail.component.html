@@ -1,0 +1,64 @@
+<ng-container *ngIf="travel$ | async as travel; else travelFallback">
+  <section class="travel-detail">
+    <header class="travel-header">
+      <div class="info">
+        <h1>{{ travel.title }}</h1>
+        <p class="destination">{{ travel.destination }}</p>
+        <p class="dates">
+          {{ travel.startDate | date: 'dd/MM/yyyy' }} - {{ travel.endDate | date: 'dd/MM/yyyy' }}
+        </p>
+        <p class="description">{{ travel.description || 'Pas de description' }}</p>
+        <img
+          *ngIf="travel.imageUrl"
+          class="preview"
+          [src]="getImageUrl(travel.imageUrl)"
+          alt="{{ travel.title }}"
+        />
+      </div>
+      <div class="header-actions">
+        <a [routerLink]="['/travels', travel.id, 'edit']">Modifier le voyage</a>
+        <button type="button" (click)="deleteTravel(travel.id)">Supprimer</button>
+      </div>
+    </header>
+
+    <section class="step-creator">
+      <h2>Ajouter une étape</h2>
+      <form [formGroup]="stepForm" (ngSubmit)="createStep(travel.id)">
+        <input formControlName="name" placeholder="Nom de l'étape" />
+        <p class="error" *ngIf="stepForm.controls.name.invalid && stepForm.controls.name.touched">Nom obligatoire</p>
+        <input formControlName="order" type="number" placeholder="Ordre" />
+        <button type="submit">Ajouter</button>
+      </form>
+    </section>
+
+    <section class="steps-board">
+      <ng-container *ngIf="travel.steps?.length; else noSteps">
+        <ng-container *ngIf="highlightedStepId$ | async as highlighted">
+          <div class="columns">
+            <app-step-column
+              *ngFor="let step of getSortedSteps(travel.steps); trackBy: trackStep"
+              [step]="step"
+              [highlighted]="highlighted === step.id"
+              (editStep)="editStep($event)"
+              (deleteStep)="removeStep($event)"
+              (addActivity)="addNewActivity(travel.id, $event)"
+              (editActivity)="editActivity(travel.id, $event)"
+              (deleteActivity)="removeActivity(travel.id, $event)"
+              (updateStatus)="changeStatus(travel.id, $event)"
+            ></app-step-column>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #noSteps>
+        <p>Aucune étape pour ce voyage.</p>
+      </ng-template>
+    </section>
+  </section>
+</ng-container>
+
+<ng-template #travelFallback>
+  <p *ngIf="loading$ | async; else notFound">Chargement du voyage...</p>
+  <ng-template #notFound>
+    <p>Voyage introuvable.</p>
+  </ng-template>
+</ng-template>

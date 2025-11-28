@@ -1,0 +1,100 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+.list-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 200%;
+}
+
+.intro p {
+  margin: 0;
+  font-size: 110%;
+  color: #475569;
+}
+
+.primary-link {
+  padding: 1% 2%;
+  background: #0ea5e9;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 2%;
+}
+
+.travel-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
+  gap: 2%;
+}
+
+.travel-card {
+  background: #ffffff;
+  border-radius: 2%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  border: 0.5% solid transparent;
+}
+
+.travel-card.highlight {
+  border-color: #38bdf8;
+}
+
+.travel-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.travel-card h2 {
+  margin: 0;
+  font-size: 140%;
+}
+
+.travel-card span {
+  color: #0ea5e9;
+  font-size: 110%;
+}
+
+.dates {
+  margin: 0;
+  font-size: 100%;
+  color: #334155;
+}
+
+.description {
+  margin: 0;
+  font-size: 100%;
+  color: #475569;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4%;
+}
+
+.action {
+  text-decoration: none;
+  color: #0ea5e9;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+}
